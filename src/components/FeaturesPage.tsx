@@ -1,10 +1,9 @@
-import { Features as FeaturesComponent } from "../components/Features";
-import { GameLibrary } from "../components/GameLibrary";
+import { Features as FeaturesComponent } from "./Features";
+import { GameLibrary } from "./GameLibrary";
 import { ArrowRight, Code } from "lucide-react";
-import { Link } from "react-router";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
 
-export function Features() {
+export function FeaturesPage() {
   return (
     <div className="pt-20">
       <div className="relative py-24 md:py-32 text-center px-4 overflow-hidden bg-slate-900">
@@ -59,10 +58,10 @@ export function Features() {
                 ))}
               </ul>
 
-              <Link to="/api-docs" className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl group">
+              <a href="/api-docs" className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl group">
                 查看 API 文件
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </div>
             
             <div className="order-1 lg:order-2 relative">

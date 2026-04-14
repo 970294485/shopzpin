@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ApiDocs } from '../components/ApiDocs';
+---
+
+<BaseLayout title="API 文件 - Shopzpin" description="Shopzpin 提供完善且安全的 RESTful API，讓您的工程團隊輕鬆串接現有系統。">
+  <ApiDocs client:load />
+</BaseLayout>

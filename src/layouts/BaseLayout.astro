@@ -1,0 +1,36 @@
+---
+import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
+import '../styles/index.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Shopzpin - 遊戲化行銷平台',
+  description = '專為電商商家打造的頂級遊戲化行銷平台。建立名單、提升銷量，將訪客變成忠實粉絲。',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="min-h-screen bg-white font-sans text-slate-900 flex flex-col">
+      <Navbar client:load />
+      <main class="flex-grow">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

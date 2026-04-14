@@ -1,5 +1,5 @@
-import { Integrations } from "../components/Integrations";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { Integrations } from "./Integrations";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function IntegrationsPage() {
   return (

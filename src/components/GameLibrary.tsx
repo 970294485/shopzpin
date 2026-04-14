@@ -1,9 +1,17 @@
 import React from "react";
 import { ArrowRight, Star } from "lucide-react";
-import luckyWheelImg from "../../imports/game-colour-spin-150x150.png";
-import whackAMoleImg from "../../imports/game-whack-the-mole-150x150.png";
-import memoryGameImg from "../../imports/game-memory-game-150x150.png";
-import countTheSheepImg from "../../imports/game-count-the-sheep-150x150.png";
+import luckyWheelImport from "../imports/game-colour-spin-150x150.png";
+import whackAMoleImport from "../imports/game-whack-the-mole-150x150.png";
+import memoryGameImport from "../imports/game-memory-game-150x150.png";
+import countTheSheepImport from "../imports/game-count-the-sheep-150x150.png";
+
+function resolveImg(img: any): string {
+  return typeof img === 'object' && img !== null ? img.src : img;
+}
+const luckyWheelImg = resolveImg(luckyWheelImport);
+const whackAMoleImg = resolveImg(whackAMoleImport);
+const memoryGameImg = resolveImg(memoryGameImport);
+const countTheSheepImg = resolveImg(countTheSheepImport);
 
 const games = [
   {

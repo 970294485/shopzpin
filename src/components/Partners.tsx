@@ -1,7 +1,8 @@
 import React from "react";
 import { Handshake, Building2, Cpu, LineChart, Globe2, ShieldCheck, PlayCircle, Trophy } from "lucide-react";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import partnerImg from "../../imports/下載_(2).jpg";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import partnerImport from "../imports/下載_(2).jpg";
+const partnerImg = typeof partnerImport === 'object' && partnerImport !== null ? (partnerImport as any).src : partnerImport;
 
 export function Partners() {
   return (

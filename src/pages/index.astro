@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Hero } from '../components/Hero';
+import { HowItWorks } from '../components/HowItWorks';
+import { Analytics } from '../components/Analytics';
+import { Testimonial } from '../components/Testimonial';
+---
+
+<BaseLayout title="Shopzpin - 遊戲化行銷平台 | 電商互動行銷首選">
+  <Hero client:load />
+  <HowItWorks />
+  <Analytics client:visible />
+  <Testimonial />
+</BaseLayout>

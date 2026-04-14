@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router";
 import { ShoppingBag, CreditCard, ShieldCheck, ShoppingCart, Wallet } from "lucide-react";
 
 export function Integrations() {
@@ -65,9 +64,9 @@ export function Integrations() {
               <p className="text-slate-600 text-sm">自動生成獨一無二的單次使用代碼並同步至您的結帳系統，防止濫用。</p>
             </div>
           </div>
-          <Link to="/api-docs" className="whitespace-nowrap px-6 py-2.5 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-bold rounded-lg transition-colors">
+          <a href="/api-docs" className="whitespace-nowrap px-6 py-2.5 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-bold rounded-lg transition-colors">
             查看所有整合
-          </Link>
+          </a>
         </div>
       </div>
     </section>

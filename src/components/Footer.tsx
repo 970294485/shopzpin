@@ -1,7 +1,7 @@
 import React from "react";
 import { Twitter, Linkedin, Facebook } from "lucide-react";
-import { Link } from "react-router";
-import logoUrl from "../../imports/shopzpin-logo-white@2x-pihzw0jz0vx1eoidx9hackg3eft0a508opyeiz3s9e.png";
+import logoImport from "../imports/shopzpin-logo-white@2x-pihzw0jz0vx1eoidx9hackg3eft0a508opyeiz3s9e.png";
+const logoUrl = typeof logoImport === 'object' && logoImport !== null ? (logoImport as any).src : logoImport;
 
 export function Footer() {
   return (
@@ -32,18 +32,18 @@ export function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4">產品</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/features" className="hover:text-[#ffcb05] transition-colors">功能</Link></li>
-              <li><Link to="/integrations" className="hover:text-[#ffcb05] transition-colors">整合</Link></li>
-              <li><Link to="/pricing" className="hover:text-[#ffcb05] transition-colors">價格</Link></li>
+              <li><a href="/features" className="hover:text-[#ffcb05] transition-colors">功能</a></li>
+              <li><a href="/integrations" className="hover:text-[#ffcb05] transition-colors">整合</a></li>
+              <li><a href="/pricing" className="hover:text-[#ffcb05] transition-colors">價格</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-white font-bold mb-4">資源</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/user-manual" className="hover:text-[#ffcb05] transition-colors">使用手冊</Link></li>
-              <li><Link to="/ecommerce-guide" className="hover:text-[#ffcb05] transition-colors">電商指南</Link></li>
-              <li><Link to="/api-docs" className="hover:text-[#ffcb05] transition-colors">API 文件</Link></li>
+              <li><a href="/user-manual" className="hover:text-[#ffcb05] transition-colors">使用手冊</a></li>
+              <li><a href="/ecommerce-guide" className="hover:text-[#ffcb05] transition-colors">電商指南</a></li>
+              <li><a href="/api-docs" className="hover:text-[#ffcb05] transition-colors">API 文件</a></li>
             </ul>
           </div>
 
@@ -51,9 +51,9 @@ export function Footer() {
             <h4 className="text-white font-bold mb-4">公司</h4>
             <ul className="space-y-3 text-sm">
               <li><a href="#" className="hover:text-[#ffcb05] transition-colors">關於我們</a></li>
-              <li><Link to="/careers" className="hover:text-[#ffcb05] transition-colors">招募</Link></li>
-              <li><Link to="/contact" className="hover:text-[#ffcb05] transition-colors">聯絡我們</Link></li>
-              <li><Link to="/partners" className="hover:text-[#ffcb05] transition-colors">合作夥伴</Link></li>
+              <li><a href="/careers" className="hover:text-[#ffcb05] transition-colors">招募</a></li>
+              <li><a href="/contact" className="hover:text-[#ffcb05] transition-colors">聯絡我們</a></li>
+              <li><a href="/partners" className="hover:text-[#ffcb05] transition-colors">合作夥伴</a></li>
             </ul>
           </div>
 

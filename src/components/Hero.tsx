@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Zap, Play, CheckCircle, X } from "lucide-react";
 import { motion } from "motion/react";
-import luckyWheelImg from "../../imports/game-colour-spin-150x150.png";
+import luckyWheelImport from "../imports/game-colour-spin-150x150.png";
+const luckyWheelImg = typeof luckyWheelImport === 'object' && luckyWheelImport !== null ? (luckyWheelImport as any).src : luckyWheelImport;
 
 const bgImage = "https://images.unsplash.com/photo-1645109870868-e1b6f909e444?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwbGF5aW5nJTIwbW9iaWxlJTIwZ2FtZXxlbnwxfHx8fDE3NzYxNTUyNDd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
 

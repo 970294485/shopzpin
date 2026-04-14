@@ -1,8 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { FeaturesPage } from '../components/FeaturesPage';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "功能與遊戲庫 - Shopzpin",
+  "description": "透過 Shopzpin 的多樣化互動遊戲與強大行銷工具，輕鬆打造高轉換率的專屬活動。",
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Shopzpin",
+    "applicationCategory": "BusinessApplication",
+    "featureList": [
+      "幸運轉盤遊戲",
+      "打地鼠遊戲",
+      "記憶遊戲",
+      "數綿羊遊戲",
+      "進階受眾定位與觸發條件",
+      "A/B 測試功能",
+      "開放式 API 串接",
+      "即時 Webhook 推送",
+      "沙盒環境測試"
+    ]
+  }
+};
 ---
 
-<BaseLayout title="功能與遊戲庫 - Shopzpin" description="透過 Shopzpin 的多樣化互動遊戲與強大行銷工具，輕鬆打造高轉換率的專屬活動。">
+<BaseLayout title="功能與遊戲庫 - Shopzpin" description="透過 Shopzpin 的多樣化互動遊戲與強大行銷工具，輕鬆打造高轉換率的專屬活動。" structuredData={structuredData}>
   <FeaturesPage client:load />
 </BaseLayout>

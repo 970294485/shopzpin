@@ -6,12 +6,61 @@ import '../styles/index.css';
 interface Props {
   title?: string;
   description?: string;
+  structuredData?: Record<string, any> | Record<string, any>[];
+  canonicalUrl?: string;
+  ogImage?: string;
 }
+
+const SITE_URL = 'https://shopzpin.onrender.com';
 
 const {
   title = 'Shopzpin - 遊戲化行銷平台',
   description = '專為電商商家打造的頂級遊戲化行銷平台。建立名單、提升銷量，將訪客變成忠實粉絲。',
+  structuredData,
+  canonicalUrl = new URL(Astro.url.pathname, SITE_URL).href,
+  ogImage = `${SITE_URL}/og-default.png`,
 } = Astro.props;
+
+const jsonLdItems = structuredData
+  ? Array.isArray(structuredData) ? structuredData : [structuredData]
+  : [];
+
+const pathname = Astro.url.pathname;
+const pageNames: Record<string, string> = {
+  '/features/': '功能與遊戲庫',
+  '/integrations/': '整合與串接',
+  '/pricing/': '方案價格',
+  '/api-docs/': 'API 文件',
+  '/contact/': '聯絡我們',
+  '/ecommerce-guide/': '電商指南',
+  '/user-manual/': '使用手冊',
+  '/careers/': '加入我們',
+  '/partners/': '合作夥伴',
+  '/videos/': '影片教學',
+};
+
+const normalizedPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
+const pageName = pageNames[normalizedPath];
+if (pageName) {
+  jsonLdItems.push({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "首頁",
+        "item": SITE_URL
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": pageName,
+        "item": canonicalUrl
+      }
+    ]
+  });
+}
 ---
 
 <!doctype html>
@@ -21,8 +70,27 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:site_name" content="Shopzpin" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <title>{title}</title>
+
+    {jsonLdItems.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
   </head>
   <body>
     <div class="min-h-screen bg-white font-sans text-slate-900 flex flex-col">

@@ -1,8 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Partners } from '../components/Partners';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "合作夥伴計劃 - Shopzpin",
+  "description": "加入 Shopzpin 合作夥伴計劃，共同拓展遊戲化行銷市場。"
+};
 ---
 
-<BaseLayout title="合作夥伴 - Shopzpin" description="加入 Shopzpin 合作夥伴計劃，共同拓展遊戲化行銷市場。">
+<BaseLayout title="合作夥伴 - Shopzpin" description="加入 Shopzpin 合作夥伴計劃，共同拓展遊戲化行銷市場。" structuredData={structuredData}>
   <Partners client:load />
 </BaseLayout>

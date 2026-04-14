@@ -1,8 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Contact } from '../components/Contact';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "聯絡我們 - Shopzpin",
+  "description": "想了解更多關於 Shopzpin 的服務？請填寫表單，我們的專員將盡快與您聯繫。",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Shopzpin",
+    "email": "enquiry@shopzpin.store",
+    "url": "https://shopzpin.onrender.com"
+  }
+};
 ---
 
-<BaseLayout title="聯絡我們 - Shopzpin" description="想了解更多關於 Shopzpin 的服務？請填寫表單，我們的專員將盡快與您聯繫。">
+<BaseLayout title="聯絡我們 - Shopzpin" description="想了解更多關於 Shopzpin 的服務？請填寫表單，我們的專員將盡快與您聯繫。" structuredData={structuredData}>
   <Contact />
 </BaseLayout>

@@ -1,9 +1,72 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Pricing } from '../components/Pricing';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "方案價格 - Shopzpin",
+  "description": "選擇最適合您業務規模的 Shopzpin 方案，開始遊戲化行銷之旅。",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Offer",
+          "name": "入門版",
+          "description": "適合希望增加名單的新手商家。每月高達 5,000 次曝光、幸運轉盤遊戲、基本客製化。",
+          "price": "399",
+          "priceCurrency": "HKD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "399",
+            "priceCurrency": "HKD",
+            "billingDuration": "P1M"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Offer",
+          "name": "成長版",
+          "description": "適合準備大幅提升轉換率的成熟商店。每月高達 50,000 次曝光、所有遊戲類型、A/B 測試功能。",
+          "price": "799",
+          "priceCurrency": "HKD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "799",
+            "priceCurrency": "HKD",
+            "billingDuration": "P1M"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Offer",
+          "name": "專業版",
+          "description": "需要發揮最大效能的高流量商家。無限曝光次數、專屬遊戲建立、API 存取權限。",
+          "price": "8099",
+          "priceCurrency": "HKD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "8099",
+            "priceCurrency": "HKD",
+            "billingDuration": "P1M"
+          }
+        }
+      }
+    ]
+  }
+};
 ---
 
-<BaseLayout title="方案價格 - Shopzpin" description="選擇最適合您業務規模的 Shopzpin 方案，開始遊戲化行銷之旅。">
+<BaseLayout title="方案價格 - Shopzpin" description="選擇最適合您業務規模的 Shopzpin 方案，開始遊戲化行銷之旅。" structuredData={structuredData}>
   <div class="pt-20">
     <Pricing />
   </div>

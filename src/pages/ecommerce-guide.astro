@@ -1,8 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { EcommerceGuide } from '../components/EcommerceGuide';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "電商指南",
+  "headline": "電商行銷策略與遊戲化應用指南",
+  "description": "深入了解電商行銷策略與遊戲化應用，助您提升營業額。",
+  "author": {
+    "@type": "Organization",
+    "name": "Shopzpin"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shopzpin",
+    "url": "https://shopzpin.onrender.com"
+  },
+  "inLanguage": "zh-Hant"
+};
 ---
 
-<BaseLayout title="電商指南 - Shopzpin" description="深入了解電商行銷策略與遊戲化應用，助您提升營業額。">
+<BaseLayout title="電商指南 - Shopzpin" description="深入了解電商行銷策略與遊戲化應用，助您提升營業額。" structuredData={structuredData}>
   <EcommerceGuide client:load />
 </BaseLayout>

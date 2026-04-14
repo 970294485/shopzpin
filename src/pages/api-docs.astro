@@ -1,8 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { ApiDocs } from '../components/ApiDocs';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "name": "Shopzpin API 文件",
+  "description": "Shopzpin 提供完善且安全的 RESTful API，讓您的工程團隊輕鬆串接現有系統。",
+  "author": {
+    "@type": "Organization",
+    "name": "Shopzpin"
+  },
+  "inLanguage": "zh-Hant",
+  "proficiencyLevel": "Expert",
+  "about": {
+    "@type": "APIReference",
+    "name": "Shopzpin REST API",
+    "programmingLanguage": "RESTful API"
+  }
+};
 ---
 
-<BaseLayout title="API 文件 - Shopzpin" description="Shopzpin 提供完善且安全的 RESTful API，讓您的工程團隊輕鬆串接現有系統。">
+<BaseLayout title="API 文件 - Shopzpin" description="Shopzpin 提供完善且安全的 RESTful API，讓您的工程團隊輕鬆串接現有系統。" structuredData={structuredData}>
   <ApiDocs client:load />
 </BaseLayout>

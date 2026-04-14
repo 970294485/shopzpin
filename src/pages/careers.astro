@@ -1,8 +1,98 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Careers } from '../components/Careers';
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "資深前端工程師 (React)",
+    "description": "加入 Shopzpin 工程團隊，參與遊戲化行銷平台的核心產品開發。",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Shopzpin",
+      "sameAs": "https://shopzpin.onrender.com"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": { "@type": "PostalAddress", "addressLocality": "香港", "addressCountry": "HK" }
+    },
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "datePosted": "2025-01-01"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "行銷企劃專員",
+    "description": "加入 Shopzpin 行銷團隊，策劃遊戲化行銷活動。",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Shopzpin",
+      "sameAs": "https://shopzpin.onrender.com"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": { "@type": "PostalAddress", "addressLocality": "香港", "addressRegion": "銅鑼灣", "addressCountry": "HK" }
+    },
+    "employmentType": "FULL_TIME",
+    "datePosted": "2025-01-01"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "商業開發經理 (B2B SaaS)",
+    "description": "加入 Shopzpin 業務團隊，拓展 B2B SaaS 市場。",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Shopzpin",
+      "sameAs": "https://shopzpin.onrender.com"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": { "@type": "PostalAddress", "addressLocality": "台北", "addressCountry": "TW" }
+    },
+    "employmentType": "FULL_TIME",
+    "datePosted": "2025-01-01"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "UI/UX 設計師",
+    "description": "加入 Shopzpin 設計團隊，打造出色的使用者體驗。",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Shopzpin",
+      "sameAs": "https://shopzpin.onrender.com"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": { "@type": "PostalAddress", "addressLocality": "台北", "addressCountry": "TW" }
+    },
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "datePosted": "2025-01-01"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "客戶成功經理 (CSM)",
+    "description": "加入 Shopzpin 客戶服務團隊，確保客戶成功使用平台。",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Shopzpin",
+      "sameAs": "https://shopzpin.onrender.com"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": { "@type": "PostalAddress", "addressLocality": "香港", "addressCountry": "HK" }
+    },
+    "employmentType": "FULL_TIME",
+    "datePosted": "2025-01-01"
+  }
+];
 ---
 
-<BaseLayout title="加入我們 - Shopzpin" description="一起打造未來的遊戲化行銷平台，我們正在尋找充滿熱情的夥伴。">
+<BaseLayout title="加入我們 - Shopzpin" description="一起打造未來的遊戲化行銷平台，我們正在尋找充滿熱情的夥伴。" structuredData={structuredData}>
   <Careers />
 </BaseLayout>

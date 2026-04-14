@@ -1,8 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { IntegrationsPage } from '../components/IntegrationsPage';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "整合與串接 - Shopzpin",
+  "description": "Shopzpin 支援多種熱門電子商務平台與行銷工具，輕鬆一鍵整合。",
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Shopzpin",
+    "applicationCategory": "BusinessApplication",
+    "featureList": [
+      "Shopify 整合",
+      "WooCommerce 整合",
+      "Stripe 支付串接",
+      "PayPal 支付串接",
+      "Braintree 支付串接"
+    ]
+  }
+};
 ---
 
-<BaseLayout title="整合與串接 - Shopzpin" description="Shopzpin 支援多種熱門電子商務平台與行銷工具，輕鬆一鍵整合。">
+<BaseLayout title="整合與串接 - Shopzpin" description="Shopzpin 支援多種熱門電子商務平台與行銷工具，輕鬆一鍵整合。" structuredData={structuredData}>
   <IntegrationsPage client:load />
 </BaseLayout>

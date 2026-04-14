@@ -1,8 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { UserManual } from '../components/UserManual';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "name": "Shopzpin 使用手冊",
+  "description": "完整的 Shopzpin 使用指南，從註冊到進階功能一應俱全。",
+  "author": {
+    "@type": "Organization",
+    "name": "Shopzpin"
+  },
+  "inLanguage": "zh-Hant",
+  "proficiencyLevel": "Beginner"
+};
 ---
 
-<BaseLayout title="使用手冊 - Shopzpin" description="完整的 Shopzpin 使用指南，從註冊到進階功能一應俱全。">
+<BaseLayout title="使用手冊 - Shopzpin" description="完整的 Shopzpin 使用指南，從註冊到進階功能一應俱全。" structuredData={structuredData}>
   <UserManual client:load />
 </BaseLayout>

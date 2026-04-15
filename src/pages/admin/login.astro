@@ -1,0 +1,12 @@
+---
+import AdminLoginLayout from '../../layouts/AdminLoginLayout.astro';
+import { AdminLoginForm } from '../../components/AdminLoginForm';
+
+const nextRaw = Astro.url.searchParams.get('next') || '/admin/videos/';
+const next =
+  nextRaw.startsWith('/') && !nextRaw.startsWith('//') ? nextRaw : '/admin/videos/';
+---
+
+<AdminLoginLayout title="管理後台登入 - Shopzpin">
+  <AdminLoginForm client:load next={next} />
+</AdminLoginLayout>

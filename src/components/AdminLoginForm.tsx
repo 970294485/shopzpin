@@ -16,7 +16,7 @@ export function AdminLoginForm({ next }: Props) {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch("/api/admin/login", {
+      const res = await fetch("/api/admin/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

@@ -21,15 +21,15 @@ export function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-8 absolute left-1/2 transform -translate-x-1/2">
             <a href="/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">首頁</a>
-            <a href="/features" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">功能</a>
-            <a href="/integrations" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">整合</a>
-            <a href="/pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">價格</a>
-            <a href="/partners" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">合作夥伴</a>
-            <a href="/careers" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">招募</a>
-            <a href="/user-manual" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">使用手冊</a>
-            <a href="/api-docs" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">API 文件</a>
-            <a href="/videos" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">影片教學</a>
-            <a href="/contact" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">聯絡我們</a>
+            <a href="/features/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">功能</a>
+            <a href="/integrations/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">整合</a>
+            <a href="/pricing/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">價格</a>
+            <a href="/partners/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">合作夥伴</a>
+            <a href="/careers/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">招募</a>
+            <a href="/user-manual/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">使用手冊</a>
+            <a href="/api-docs/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">API 文件</a>
+            <a href="/videos/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">影片教學</a>
+            <a href="/contact/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">聯絡我們</a>
           </div>
 
           {/* Actions (lg+ 與中央導覽並列，平板與手機改由選單內操作) */}
@@ -71,15 +71,15 @@ export function Navbar() {
         >
           <div className="flex flex-col space-y-4 pt-4">
             <a href="/" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">首頁</a>
-            <a href="/features" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">功能</a>
-            <a href="/integrations" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">整合</a>
-            <a href="/pricing" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">價格</a>
-            <a href="/partners" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">合作夥伴</a>
-            <a href="/careers" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">招募</a>
-            <a href="/user-manual" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">使用手冊</a>
-            <a href="/api-docs" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">API 文件</a>
-            <a href="/videos" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">影片教學</a>
-            <a href="/contact" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">聯絡我們</a>
+            <a href="/features/" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">功能</a>
+            <a href="/integrations/" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">整合</a>
+            <a href="/pricing/" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">價格</a>
+            <a href="/partners/" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">合作夥伴</a>
+            <a href="/careers/" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">招募</a>
+            <a href="/user-manual/" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">使用手冊</a>
+            <a href="/api-docs/" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">API 文件</a>
+            <a href="/videos/" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">影片教學</a>
+            <a href="/contact/" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">聯絡我們</a>
             <div className="h-px bg-slate-800 w-full my-2"></div>
             <a 
               href="https://shopzpin-merchant-web.shopzpin.com/#/auth/login?returnUrl=%2Fdashboard"

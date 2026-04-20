@@ -13,6 +13,11 @@ interface Props {
 
 const SITE_URL = 'https://shopzpin.onrender.com';
 
+/** GSC HTML 標記驗證：須出現在伺服器回傳的 `<head>` 初始 HTML（勿放在 React body）。優先讀環境變數。 */
+const googleSiteVerification =
+  import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() ||
+  'rNCQvEeX3dx-g4Z6MEh62QPMKELAu42docvvQP9OI3A';
+
 const {
   title = 'Shopzpin - 遊戲化行銷平台',
   description = '專為電商商家打造的頂級遊戲化行銷平台。建立名單、提升銷量，將訪客變成忠實粉絲。',
@@ -68,7 +73,7 @@ if (pageName) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="rNCQvEeX3dx-g4Z6MEh62QPMKELAu42docvvQP9OI3A" />
+    <meta name="google-site-verification" content={googleSiteVerification} />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />

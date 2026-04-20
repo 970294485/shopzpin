@@ -120,7 +120,7 @@ export function VideoPage() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("/api/videos");
+        const res = await fetch("/api/videos/");
         if (!res.ok) throw new Error("bad status");
         const data = (await res.json()) as { videos?: VideoRecord[] };
         if (!cancelled) setVideos(data.videos ?? []);

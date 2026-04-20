@@ -31,18 +31,18 @@ export function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4">產品</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/features" className="hover:text-[#ffcb05] transition-colors">功能</a></li>
-              <li><a href="/integrations" className="hover:text-[#ffcb05] transition-colors">整合</a></li>
-              <li><a href="/pricing" className="hover:text-[#ffcb05] transition-colors">價格</a></li>
+              <li><a href="/features/" className="hover:text-[#ffcb05] transition-colors">功能</a></li>
+              <li><a href="/integrations/" className="hover:text-[#ffcb05] transition-colors">整合</a></li>
+              <li><a href="/pricing/" className="hover:text-[#ffcb05] transition-colors">價格</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-white font-bold mb-4">資源</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/user-manual" className="hover:text-[#ffcb05] transition-colors">使用手冊</a></li>
-              <li><a href="/ecommerce-guide" className="hover:text-[#ffcb05] transition-colors">電商指南</a></li>
-              <li><a href="/api-docs" className="hover:text-[#ffcb05] transition-colors">API 文件</a></li>
+              <li><a href="/user-manual/" className="hover:text-[#ffcb05] transition-colors">使用手冊</a></li>
+              <li><a href="/ecommerce-guide/" className="hover:text-[#ffcb05] transition-colors">電商指南</a></li>
+              <li><a href="/api-docs/" className="hover:text-[#ffcb05] transition-colors">API 文件</a></li>
             </ul>
           </div>
 
@@ -50,9 +50,9 @@ export function Footer() {
             <h4 className="text-white font-bold mb-4">公司</h4>
             <ul className="space-y-3 text-sm">
               <li><a href="#" className="hover:text-[#ffcb05] transition-colors">關於我們</a></li>
-              <li><a href="/careers" className="hover:text-[#ffcb05] transition-colors">招募</a></li>
-              <li><a href="/contact" className="hover:text-[#ffcb05] transition-colors">聯絡我們</a></li>
-              <li><a href="/partners" className="hover:text-[#ffcb05] transition-colors">合作夥伴</a></li>
+              <li><a href="/careers/" className="hover:text-[#ffcb05] transition-colors">招募</a></li>
+              <li><a href="/contact/" className="hover:text-[#ffcb05] transition-colors">聯絡我們</a></li>
+              <li><a href="/partners/" className="hover:text-[#ffcb05] transition-colors">合作夥伴</a></li>
             </ul>
           </div>
 

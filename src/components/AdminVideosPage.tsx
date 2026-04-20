@@ -19,7 +19,7 @@ function loginUrl(): string {
 }
 
 async function fetchVideos(): Promise<VideoRecord[]> {
-  const res = await fetch("/api/videos", fetchOpts);
+  const res = await fetch("/api/videos/", fetchOpts);
   if (res.status === 401) {
     window.location.href = loginUrl();
     throw new Error("unauthorized");
@@ -74,7 +74,7 @@ export function AdminVideosPage() {
     setSaving(true);
     setError(null);
     try {
-      const res = await fetch("/api/videos", {
+      const res = await fetch("/api/videos/", {
         ...fetchOpts,
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -120,7 +120,7 @@ export function AdminVideosPage() {
     setSaving(true);
     setError(null);
     try {
-      const res = await fetch(`/api/videos/${encodeURIComponent(editId)}`, {
+      const res = await fetch(`/api/videos/${encodeURIComponent(editId)}/`, {
         ...fetchOpts,
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -153,7 +153,7 @@ export function AdminVideosPage() {
     if (!confirm("確定要刪除此影片？此動作無法復原。")) return;
     setError(null);
     try {
-      const res = await fetch(`/api/videos/${encodeURIComponent(id)}`, {
+      const res = await fetch(`/api/videos/${encodeURIComponent(id)}/`, {
         ...fetchOpts,
         method: "DELETE",
       });

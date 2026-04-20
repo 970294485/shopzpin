@@ -102,7 +102,14 @@ export function isAdminRequest(request: Request): boolean {
   return verifySessionToken(raw);
 }
 
-export function sessionCookieHeader(token: string): string {
+/** 僅在 HTTPS 時加 Secure，避免生產環境以 HTTP 提供時瀏覽器拒絕寫入 Cookie 而無法登入。 */
+function appendSecureIfHttps(parts: string[], request: Request): void {
+  if (new URL(request.url).protocol === "https:") {
+    parts.push("Secure");
+  }
+}
+
+export function sessionCookieHeader(token: string, request: Request): string {
   const parts = [
     `${ADMIN_SESSION_COOKIE}=${encodeURIComponent(token)}`,
     "Path=/",
@@ -110,11 +117,11 @@ export function sessionCookieHeader(token: string): string {
     "HttpOnly",
     "SameSite=Lax",
   ];
-  if (import.meta.env.PROD) parts.push("Secure");
+  appendSecureIfHttps(parts, request);
   return parts.join("; ");
 }
 
-export function clearSessionCookieHeader(): string {
+export function clearSessionCookieHeader(request: Request): string {
   const parts = [
     `${ADMIN_SESSION_COOKIE}=`,
     "Path=/",
@@ -122,6 +129,6 @@ export function clearSessionCookieHeader(): string {
     "HttpOnly",
     "SameSite=Lax",
   ];
-  if (import.meta.env.PROD) parts.push("Secure");
+  appendSecureIfHttps(parts, request);
   return parts.join("; ");
 }

@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
+        <div className="mb-12 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-8 lg:grid-cols-6">
           <div className="sm:col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
               <img src={logoUrl} alt="Shopzpin" className="h-8 w-auto" />
@@ -56,6 +56,14 @@ export function Footer() {
             </ul>
           </div>
 
+          <div>
+            <div className="flex flex-wrap items-center gap-3">
+              <img
+                src="/images/pngegg.png"
+                alt="Google Pay"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600">

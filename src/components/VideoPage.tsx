@@ -139,8 +139,8 @@ export function VideoPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-12 pt-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen min-w-0 bg-slate-50 pb-10 pt-24 sm:pb-12">
+      <div className="mx-auto max-w-7xl min-w-0 px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
             <h1 className="flex items-center gap-3 text-3xl font-bold text-slate-900">
@@ -153,7 +153,7 @@ export function VideoPage() {
           </div>
           <a
             href="/admin/login/?next=%2Fadmin%2Fvideos%2F"
-            className="text-sm font-medium text-slate-600 underline-offset-4 hover:text-slate-900 hover:underline"
+            className="inline-flex min-h-11 items-center text-sm font-medium text-slate-600 underline-offset-4 hover:text-slate-900 hover:underline md:min-h-0"
           >
             管理員登入後台
           </a>

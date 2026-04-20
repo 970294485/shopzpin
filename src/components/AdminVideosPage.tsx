@@ -228,7 +228,7 @@ export function AdminVideosPage() {
   );
 
   return (
-    <div className="px-4 py-8 sm:px-6 lg:px-8">
+    <div className="min-w-0 px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
       <div className="mx-auto max-w-5xl">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -266,7 +266,7 @@ export function AdminVideosPage() {
           ))}
         </datalist>
 
-        <section className="mb-10 rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-sm">
+        <section className="mb-10 rounded-2xl border border-slate-800 bg-slate-900 p-4 shadow-sm md:p-6">
           <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-white">
             <Plus className="h-5 w-5 text-[#ffcb05]" />
             新增影片
@@ -307,11 +307,11 @@ export function AdminVideosPage() {
               />
             </div>
             {coverField("new")}
-            <div className="flex justify-end">
+            <div className="flex justify-stretch md:justify-end">
               <button
                 type="submit"
                 disabled={saving}
-                className="rounded-lg bg-[#ffcb05] px-5 py-2.5 text-sm font-bold text-slate-900 shadow-sm hover:bg-[#e6b604] disabled:opacity-50"
+                className="min-h-11 w-full rounded-lg bg-[#ffcb05] px-5 py-2.5 text-sm font-bold text-slate-900 shadow-sm hover:bg-[#e6b604] disabled:opacity-50 md:min-h-0 md:w-auto"
               >
                 {saving ? "儲存中…" : "建立影片"}
               </button>
@@ -320,7 +320,7 @@ export function AdminVideosPage() {
         </section>
 
         <section className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-sm">
-          <div className="border-b border-slate-800 px-6 py-4">
+          <div className="border-b border-slate-800 px-4 py-3 md:px-6 md:py-4">
             <h2 className="text-lg font-bold text-white">影片列表</h2>
             <p className="mt-1 text-sm text-slate-500">
               共 {videos.length} 筆；前台依分類區塊、分類內依發布日新到舊排序
@@ -340,9 +340,9 @@ export function AdminVideosPage() {
                 return (
                   <li
                     key={v.id}
-                    className="flex flex-col gap-4 px-6 py-4 hover:bg-slate-800/40 sm:flex-row sm:items-center"
+                    className="flex flex-col gap-4 px-4 py-4 hover:bg-slate-800/40 sm:flex-row sm:items-center md:px-6"
                   >
-                    <div className="aspect-video w-full shrink-0 overflow-hidden rounded-lg border border-slate-700 bg-slate-950 sm:w-44">
+                    <div className="aspect-video w-full min-w-0 shrink-0 overflow-hidden rounded-lg border border-slate-700 bg-slate-950 sm:w-44">
                       {thumb ? (
                         <img
                           src={thumb}
@@ -391,11 +391,11 @@ export function AdminVideosPage() {
                           .replace(/\//g, "/")}
                       </p>
                     </div>
-                    <div className="flex shrink-0 gap-2">
+                    <div className="flex w-full shrink-0 flex-col gap-2 sm:w-auto sm:flex-row sm:gap-2">
                       <button
                         type="button"
                         onClick={() => openEdit(v)}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-600 px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800"
+                        className="inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-lg border border-slate-600 px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 sm:min-h-0 sm:flex-initial sm:justify-start"
                       >
                         <Pencil className="h-4 w-4" />
                         編輯
@@ -403,7 +403,7 @@ export function AdminVideosPage() {
                       <button
                         type="button"
                         onClick={() => void handleDelete(v.id)}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-red-900/60 px-3 py-2 text-sm font-medium text-red-300 hover:bg-red-950/50"
+                        className="inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-lg border border-red-900/60 px-3 py-2 text-sm font-medium text-red-300 hover:bg-red-950/50 sm:min-h-0 sm:flex-initial sm:justify-start"
                       >
                         <Trash2 className="h-4 w-4" />
                         刪除
@@ -418,20 +418,20 @@ export function AdminVideosPage() {
       </div>
 
       {editId && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
-          <div className="max-h-[90vh] w-full max-w-xl overflow-y-auto overflow-hidden rounded-2xl border border-slate-700 bg-slate-900 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
+        <div className="fixed inset-0 z-[100] flex min-h-0 items-end justify-center overflow-y-auto overscroll-contain bg-slate-950/80 p-0 backdrop-blur-sm md:items-center md:p-4">
+          <div className="max-h-[min(92dvh,100vh)] w-full max-w-xl overflow-y-auto overflow-x-hidden rounded-t-2xl border border-slate-700 bg-slate-900 shadow-2xl md:max-h-[90vh] md:rounded-2xl">
+            <div className="flex items-center justify-between border-b border-slate-800 px-4 py-3 md:px-6 md:py-4">
               <h2 className="text-xl font-bold text-white">編輯影片</h2>
               <button
                 type="button"
                 onClick={() => setEditId(null)}
-                className="rounded-full p-2 text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+                className="flex min-h-11 min-w-11 items-center justify-center rounded-full text-slate-400 hover:bg-slate-800 hover:text-slate-200 md:min-h-0 md:min-w-0 md:p-2"
                 aria-label="關閉"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <form onSubmit={handleUpdate} className="space-y-4 p-6">
+            <form onSubmit={handleUpdate} className="space-y-4 p-4 pb-6 md:p-6 md:pb-6">
               <div>
                 <label
                   htmlFor="admin-edit-title"
@@ -466,18 +466,18 @@ export function AdminVideosPage() {
                 />
               </div>
               {coverField("edit")}
-              <div className="flex justify-end gap-3 pt-2">
+              <div className="flex flex-col-reverse gap-2 pt-2 md:flex-row md:justify-end md:gap-3">
                 <button
                   type="button"
                   onClick={() => setEditId(null)}
-                  className="rounded-lg bg-slate-800 px-5 py-2.5 text-sm font-medium text-slate-300 hover:bg-slate-700"
+                  className="min-h-11 w-full rounded-lg bg-slate-800 px-5 py-2.5 text-sm font-medium text-slate-300 hover:bg-slate-700 md:min-h-0 md:w-auto"
                 >
                   取消
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="rounded-lg bg-[#ffcb05] px-5 py-2.5 text-sm font-bold text-slate-900 hover:bg-[#e6b604] disabled:opacity-50"
+                  className="min-h-11 w-full rounded-lg bg-[#ffcb05] px-5 py-2.5 text-sm font-bold text-slate-900 hover:bg-[#e6b604] disabled:opacity-50 md:min-h-0 md:w-auto"
                 >
                   {saving ? "儲存中…" : "儲存變更"}
                 </button>

@@ -54,24 +54,24 @@ export function Hero() {
                 </button>
               </div>
 
-              <div className="flex items-center justify-center lg:justify-start gap-6 text-sm text-slate-400 font-medium">
+              <div className="flex flex-col items-center justify-center gap-3 text-sm font-medium text-slate-400 sm:flex-row sm:flex-wrap sm:gap-6 lg:justify-start">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#ffcb05]" /> 無需編寫程式碼
+                  <CheckCircle className="h-4 w-4 shrink-0 text-[#ffcb05]" /> 無需編寫程式碼
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#ffcb05]" /> 14 天免費試用
+                  <CheckCircle className="h-4 w-4 shrink-0 text-[#ffcb05]" /> 14 天免費試用
                 </div>
               </div>
             </motion.div>
           </div>
 
           {/* Graphic/Mockup */}
-          <div className="lg:col-span-6 mt-16 lg:mt-0 relative">
+          <div className="relative mt-16 min-w-0 lg:col-span-6 lg:mt-0">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative rounded-2xl bg-slate-800/50 border border-slate-700 p-4 shadow-2xl backdrop-blur-sm"
+              className="relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/50 p-3 shadow-2xl backdrop-blur-sm sm:p-4"
             >
               {/* Dashboard Mockup Header */}
               <div className="flex items-center gap-2 mb-4 border-b border-slate-700 pb-4">
@@ -163,14 +163,15 @@ export function Hero() {
 
       {/* Video Modal */}
       {isVideoOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/90 backdrop-blur-sm">
-          <div className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-[100] flex min-h-0 items-center justify-center overflow-y-auto overscroll-contain bg-slate-900/90 p-3 backdrop-blur-sm sm:p-4">
+          <div className="relative my-auto aspect-video w-full max-h-[85dvh] max-w-5xl animate-in overflow-hidden rounded-xl bg-black shadow-2xl fade-in duration-200 zoom-in-95 sm:rounded-2xl">
             <button 
               onClick={() => setIsVideoOpen(false)}
-              className="absolute top-4 right-4 z-10 p-2 bg-slate-900/50 hover:bg-red-500 text-white rounded-full transition-colors backdrop-blur-md"
+              className="absolute right-2 top-2 z-10 flex min-h-11 min-w-11 items-center justify-center rounded-full bg-slate-900/50 p-2 text-white backdrop-blur-md transition-colors hover:bg-red-500 sm:right-4 sm:top-4"
               title="關閉影片"
+              type="button"
             >
-              <X className="w-6 h-6" />
+              <X className="h-6 w-6" />
             </button>
             <iframe 
               src="https://www.youtube.com/embed/iOh7lOhfCwI?autoplay=1"

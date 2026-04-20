@@ -9,7 +9,7 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex h-20 min-w-0 items-center justify-between gap-3">
           
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-2">
@@ -32,8 +32,8 @@ export function Navbar() {
             <a href="/contact" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">聯絡我們</a>
           </div>
 
-          {/* Actions */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Actions (lg+ 與中央導覽並列，平板與手機改由選單內操作) */}
+          <div className="hidden lg:flex items-center gap-4">
             <a 
               href="https://shopzpin-merchant-web.shopzpin.com/#/auth/login?returnUrl=%2Fdashboard" 
               target="_blank" 
@@ -47,21 +47,28 @@ export function Navbar() {
             </button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button 
+          {/* Mobile / tablet menu button */}
+          <div className="flex items-center lg:hidden">
+            <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-[#ffcb05] hover:text-[#e6b604] focus:outline-none"
+              className="-mr-1 flex min-h-11 min-w-11 items-center justify-center rounded-lg text-[#ffcb05] hover:bg-slate-800/80 hover:text-[#e6b604] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ffcb05]/40"
+              aria-expanded={isOpen}
+              aria-controls="site-nav-mobile"
+              aria-label={isOpen ? "關閉選單" : "開啟選單"}
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile & tablet menu */}
       {isOpen && (
-        <div className="md:hidden bg-slate-900 border-b border-slate-800 pb-4 px-4 shadow-xl">
+        <div
+          id="site-nav-mobile"
+          className="border-b border-slate-800 bg-slate-900 px-4 pb-4 shadow-xl lg:hidden max-h-[min(70vh,28rem)] overflow-y-auto overscroll-contain"
+        >
           <div className="flex flex-col space-y-4 pt-4">
             <a href="/" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">首頁</a>
             <a href="/features" onClick={() => setIsOpen(false)} className="text-base font-medium text-slate-300">功能</a>

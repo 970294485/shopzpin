@@ -68,6 +68,7 @@ if (pageName) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="rNCQvEeX3dx-g4Z6MEh62QPMKELAu42docvvQP9OI3A" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
@@ -95,7 +96,7 @@ if (pageName) {
   <body>
     <div class="min-h-screen bg-white font-sans text-slate-900 flex flex-col">
       <Navbar client:load />
-      <main class="flex-grow">
+      <main class="min-w-0 flex-grow">
         <slot />
       </main>
       <Footer />

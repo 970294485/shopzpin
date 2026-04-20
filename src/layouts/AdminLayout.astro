@@ -18,17 +18,17 @@ const { title = 'Shopzpin 管理後台' } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
-    <div class="flex min-h-screen flex-col md:flex-row">
-      <aside class="border-b border-slate-800 bg-slate-900 md:w-56 md:shrink-0 md:border-b-0 md:border-r md:min-h-screen">
+    <div class="flex min-h-screen min-w-0 flex-col md:flex-row">
+      <aside class="min-w-0 border-b border-slate-800 bg-slate-900 md:w-56 md:shrink-0 md:border-b-0 md:border-r md:min-h-screen">
         <div class="hidden border-b border-slate-800 p-5 md:block">
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Shopzpin</p>
           <p class="mt-1 text-lg font-bold text-white">管理後台</p>
         </div>
-        <nav class="flex md:flex-col gap-1 p-3 overflow-x-auto md:overflow-visible">
+        <nav class="flex gap-1 overflow-x-auto p-3 md:flex-col md:overflow-visible">
           <a
             href="/admin/videos/"
             class:list={[
-              'whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+              'inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium transition-colors md:min-h-0',
               Astro.url.pathname.includes('/admin/videos')
                 ? 'bg-[#ffcb05] text-slate-900'
                 : 'text-slate-300 hover:bg-slate-800 hover:text-white',
@@ -38,7 +38,7 @@ const { title = 'Shopzpin 管理後台' } = Astro.props;
           </a>
           <a
             href="/"
-            class="whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white md:mt-2"
+            class="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white md:mt-2 md:min-h-0"
           >
             返回官網
           </a>
@@ -49,7 +49,7 @@ const { title = 'Shopzpin 管理後台' } = Astro.props;
           <form method="post" action="/api/admin/logout" class="inline">
             <button
               type="submit"
-              class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-1.5 text-sm font-medium text-slate-200 hover:bg-slate-700 hover:text-white"
+              class="min-h-10 rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-700 hover:text-white md:min-h-0 md:py-1.5"
             >
               登出
             </button>

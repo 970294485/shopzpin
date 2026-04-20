@@ -51,7 +51,7 @@ export function AdminLoginForm({ next }: Props) {
         </p>
       </div>
 
-      <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-xl">
+      <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-5 shadow-xl sm:p-8">
         {error && (
           <div
             className="mb-6 rounded-lg border border-red-900/50 bg-red-950/40 px-4 py-3 text-sm text-red-200"

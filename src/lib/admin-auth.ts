@@ -6,6 +6,15 @@ type CookieStore = {
 
 export const ADMIN_SESSION_COOKIE = "shopzpin_admin_session";
 
+/** 部分託管環境下 import.meta.env.PROD 與實際 NODE_ENV 不一致，後台憑證須以執行期為準。 */
+function isProductionServer(): boolean {
+  if (import.meta.env.PROD) return true;
+  if (typeof process === "undefined" || !process.env) return false;
+  if (process.env.NODE_ENV === "production") return true;
+  if (process.env.VERCEL_ENV === "production") return true;
+  return false;
+}
+
 /**
  * Vercel / Node 在執行期把變數放在 process.env；import.meta.env 會在 astro build
  * 時被 Vite 靜態替換，若建置當下沒有該值，上線後會永遠對不到 Vercel 後台設定的密碼。
@@ -28,7 +37,7 @@ function envAdmin(key: "ADMIN_SESSION_SECRET" | "ADMIN_USERNAME" | "ADMIN_PASSWO
  * 用此函式先檢查，讓 API 回 503 與明確訊息。
  */
 export function missingAdminEnvInProduction(): string[] {
-  if (!import.meta.env.PROD) return [];
+  if (!isProductionServer()) return [];
   const missing: string[] = [];
   if (!envAdmin("ADMIN_USERNAME")) missing.push("ADMIN_USERNAME");
   if (!envAdmin("ADMIN_PASSWORD")) missing.push("ADMIN_PASSWORD");
@@ -41,7 +50,7 @@ export function missingAdminEnvInProduction(): string[] {
 function getSessionSecret(): string {
   const s = envAdmin("ADMIN_SESSION_SECRET");
   if (s.length >= 16) return s;
-  if (import.meta.env.PROD) {
+  if (isProductionServer()) {
     throw new Error("ADMIN_SESSION_SECRET is required in production (min 16 chars)");
   }
   return "dev-admin-session-secret-min-16";
@@ -50,7 +59,7 @@ function getSessionSecret(): string {
 export function getExpectedUsername(): string {
   const u = envAdmin("ADMIN_USERNAME");
   if (u) return u;
-  if (import.meta.env.PROD) {
+  if (isProductionServer()) {
     throw new Error("ADMIN_USERNAME is required in production");
   }
   return "admin";
@@ -59,7 +68,7 @@ export function getExpectedUsername(): string {
 export function getExpectedPassword(): string {
   const p = envAdmin("ADMIN_PASSWORD");
   if (p.length > 0) return p;
-  if (import.meta.env.PROD) {
+  if (isProductionServer()) {
     throw new Error("ADMIN_PASSWORD is required in production");
   }
   return "admin";

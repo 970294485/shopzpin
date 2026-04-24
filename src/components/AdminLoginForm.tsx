@@ -24,7 +24,12 @@ export function AdminLoginForm({ next }: Props) {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setError((data.error as string) || "登入失敗");
+        let msg = (data.error as string) || "登入失敗";
+        if (res.status === 401) {
+          msg +=
+            " 請確認帳號、密碼與 Vercel 的 ADMIN_USERNAME、ADMIN_PASSWORD 完全一致（含大小寫），且變數已勾選 Production 並在儲存後已 Redeploy。";
+        }
+        setError(msg);
         return;
       }
       const dest =

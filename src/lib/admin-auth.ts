@@ -6,9 +6,26 @@ type CookieStore = {
 
 export const ADMIN_SESSION_COOKIE = "shopzpin_admin_session";
 
+/**
+ * Vercel / Node 在執行期把變數放在 process.env；import.meta.env 會在 astro build
+ * 時被 Vite 靜態替換，若建置當下沒有該值，上線後會永遠對不到 Vercel 後台設定的密碼。
+ */
+function envAdmin(key: "ADMIN_SESSION_SECRET" | "ADMIN_USERNAME" | "ADMIN_PASSWORD"): string {
+  const fromProcess =
+    typeof process !== "undefined" ? process.env[key] : undefined;
+  const fromMeta = import.meta.env[key];
+  const raw =
+    (typeof fromProcess === "string" && fromProcess.length > 0
+      ? fromProcess
+      : undefined) ??
+    (typeof fromMeta === "string" && fromMeta.length > 0 ? fromMeta : undefined) ??
+    "";
+  return String(raw).trim();
+}
+
 function getSessionSecret(): string {
-  const s = import.meta.env.ADMIN_SESSION_SECRET;
-  if (s && String(s).length >= 16) return String(s);
+  const s = envAdmin("ADMIN_SESSION_SECRET");
+  if (s.length >= 16) return s;
   if (import.meta.env.PROD) {
     throw new Error("ADMIN_SESSION_SECRET is required in production (min 16 chars)");
   }
@@ -16,8 +33,8 @@ function getSessionSecret(): string {
 }
 
 export function getExpectedUsername(): string {
-  const u = import.meta.env.ADMIN_USERNAME;
-  if (u && String(u).trim()) return String(u).trim();
+  const u = envAdmin("ADMIN_USERNAME");
+  if (u) return u;
   if (import.meta.env.PROD) {
     throw new Error("ADMIN_USERNAME is required in production");
   }
@@ -25,8 +42,8 @@ export function getExpectedUsername(): string {
 }
 
 export function getExpectedPassword(): string {
-  const p = import.meta.env.ADMIN_PASSWORD;
-  if (p && String(p).length > 0) return String(p);
+  const p = envAdmin("ADMIN_PASSWORD");
+  if (p.length > 0) return p;
   if (import.meta.env.PROD) {
     throw new Error("ADMIN_PASSWORD is required in production");
   }

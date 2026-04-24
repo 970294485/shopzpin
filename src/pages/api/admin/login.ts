@@ -21,7 +21,7 @@ export const POST: APIRoute = async ({ request }) => {
     const username =
       typeof body.username === "string" ? body.username.trim() : "";
     const password =
-      typeof body.password === "string" ? body.password : "";
+      typeof body.password === "string" ? body.password.trim() : "";
 
     if (!username || !password) {
       return json({ error: "請輸入帳號與密碼" }, 400);

@@ -46,7 +46,8 @@ export function Hero() {
                 <button className="w-full sm:w-auto px-8 py-4 bg-[#ffcb05] hover:bg-[#e6b604] text-slate-900 rounded-lg font-bold transition-all shadow-lg shadow-[#ffcb05]/20">
                   開始免費試用
                 </button>
-                <button 
+                <button
+                  type="button"
                   onClick={() => setIsVideoOpen(true)}
                   className="w-full sm:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-bold transition-all border border-slate-700 flex items-center justify-center gap-2"
                 >
@@ -104,6 +105,8 @@ export function Hero() {
               </div>
 
               {/* Floating Wheel Graphic */}
+             
+             {/*}
               <motion.div 
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -114,10 +117,10 @@ export function Hero() {
                   alt="幸運轉盤" 
                   className="w-full h-full object-contain drop-shadow-2xl"
                 />
-              </motion.div>
+              </motion.div>*/}
 
               {/* Popup Mockup */}
-              <motion.div 
+          {/*   <motion.div 
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
@@ -131,9 +134,10 @@ export function Hero() {
                 <button className="w-full bg-[#ffcb05] text-slate-900 text-xs py-2 rounded font-bold hover:bg-[#e6b604] transition-colors">
                   領取折扣
                 </button>
-              </motion.div>
+              </motion.div> 
 
               {/* Video Thumbnail Popup */}
+              {/*
               <motion.div 
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -154,7 +158,7 @@ export function Hero() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.div>*/}
 
             </motion.div>
           </div>
@@ -173,13 +177,16 @@ export function Hero() {
             >
               <X className="h-6 w-6" />
             </button>
-            <iframe 
-              src="https://www.youtube.com/embed/iOh7lOhfCwI?autoplay=1"
+            <video
+              src="/Shopzpin.mp4"
+              controls
+              autoPlay
+              playsInline
+              className="h-full w-full object-contain"
               title="Shopzpin 平台演示"
-              className="w-full h-full border-0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+            >
+              您的瀏覽器不支援影片播放。
+            </video>
           </div>
         </div>
       )}

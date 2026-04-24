@@ -1,7 +1,18 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { ExternalLink, ImageIcon, Pencil, Plus, Tag, Trash2, Video, X } from "lucide-react";
+import {
+  ExternalLink,
+  ImageIcon,
+  Pencil,
+  Play,
+  Plus,
+  Tag,
+  Trash2,
+  Video,
+  X,
+} from "lucide-react";
 import type { VideoRecord } from "@/lib/video-types";
 import { getEmbedUrl, getVideoPosterSrc, isYouTube } from "@/lib/video-embed";
+import { useVideoFirstFramePoster } from "@/lib/use-video-first-frame-poster";
 
 const fetchOpts: RequestInit = { credentials: "include" };
 
@@ -16,6 +27,33 @@ const PRESET_CATEGORIES = [
 function loginUrl(): string {
   const next = `${window.location.pathname}${window.location.search}`;
   return `/admin/login/?next=${encodeURIComponent(next || "/admin/videos/")}`;
+}
+
+function AdminVideoListThumb({ v }: { v: VideoRecord }) {
+  const thumb = getVideoPosterSrc(v);
+  const useFrame = !thumb && !isYouTube(v.url);
+  const framePoster = useVideoFirstFramePoster(v.url, useFrame);
+  const poster = thumb ?? framePoster;
+
+  return (
+    <div className="aspect-video w-full min-w-0 shrink-0 overflow-hidden rounded-lg border border-slate-700 bg-slate-950 sm:w-44">
+      {poster ? (
+        <img src={poster} alt="" className="h-full w-full object-cover" />
+      ) : isYouTube(v.url) ? (
+        <iframe
+          src={getEmbedUrl(v.url)}
+          title={v.title}
+          className="h-full w-full"
+          allowFullScreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        />
+      ) : (
+        <div className="flex h-full min-h-[5.5rem] w-full items-center justify-center bg-slate-900">
+          <Play className="ml-0.5 h-8 w-8 text-slate-600" />
+        </div>
+      )}
+    </div>
+  );
 }
 
 async function fetchVideos(): Promise<VideoRecord[]> {
@@ -211,7 +249,7 @@ export function AdminVideosPage() {
       </label>
       <input
         id={`admin-${idPrefix}-cover`}
-        type="url"
+        type="text"
         value={idPrefix === "new" ? coverUrl : editCoverUrl}
         onChange={(e) =>
           idPrefix === "new"
@@ -299,12 +337,16 @@ export function AdminVideosPage() {
               </label>
               <input
                 id="admin-new-url"
-                type="url"
+                type="text"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                placeholder="https://www.youtube.com/watch?v=..."
+                placeholder="YouTube 完整連結，或本站路徑如 /檔名.mp4"
                 className="w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-2.5 text-slate-100 outline-none ring-[#ffcb05]/25 placeholder:text-slate-600 focus:border-[#ffcb05] focus:ring-2"
               />
+              <p className="mt-1 text-xs text-slate-500">
+                公開目錄影片請填根路徑（例如 <code className="text-slate-400">/印花%20有字%20(1).mp4</code>
+                ），勿使用 <code className="text-slate-400">public/</code> 前綴
+              </p>
             </div>
             {coverField("new")}
             <div className="flex justify-stretch md:justify-end">
@@ -336,35 +378,12 @@ export function AdminVideosPage() {
           ) : (
             <ul className="divide-y divide-slate-800">
               {videos.map((v) => {
-                const thumb = getVideoPosterSrc(v);
                 return (
                   <li
                     key={v.id}
                     className="flex flex-col gap-4 px-4 py-4 hover:bg-slate-800/40 sm:flex-row sm:items-center md:px-6"
                   >
-                    <div className="aspect-video w-full min-w-0 shrink-0 overflow-hidden rounded-lg border border-slate-700 bg-slate-950 sm:w-44">
-                      {thumb ? (
-                        <img
-                          src={thumb}
-                          alt=""
-                          className="h-full w-full object-cover"
-                        />
-                      ) : isYouTube(v.url) ? (
-                        <iframe
-                          src={getEmbedUrl(v.url)}
-                          title={v.title}
-                          className="h-full w-full"
-                          allowFullScreen
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        />
-                      ) : (
-                        <video
-                          src={v.url}
-                          controls
-                          className="h-full w-full object-cover"
-                        />
-                      )}
-                    </div>
+                    <AdminVideoListThumb v={v} />
                     <div className="min-w-0 flex-1">
                       <span className="inline-block rounded-full bg-slate-800 px-2 py-0.5 text-xs font-medium text-[#ffcb05]">
                         {v.category || "未分類"}
@@ -458,7 +477,7 @@ export function AdminVideosPage() {
                 </label>
                 <input
                   id="admin-edit-url"
-                  type="url"
+                  type="text"
                   required
                   value={editUrl}
                   onChange={(e) => setEditUrl(e.target.value)}

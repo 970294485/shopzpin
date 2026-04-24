@@ -102,7 +102,50 @@ export function isAdminRequest(request: Request): boolean {
   return verifySessionToken(raw);
 }
 
-export function sessionCookieHeader(token: string): string {
+/**
+ * 使用者實際是否經 HTTPS 造訪（含反向代理：信任 X-Forwarded-Proto / Forwarded）。
+ * 僅在 true 時為 session cookie 加上 Secure，避免 HTTPS 頁面因缺少 Secure 而拒絕寫入 cookie。
+ */
+function isClientHttps(request: Request): boolean {
+  const xfp = request.headers.get("x-forwarded-proto");
+  if (xfp) {
+    const first = xfp.split(",")[0]?.trim().toLowerCase();
+    if (first === "https") return true;
+    if (first === "http") return false;
+  }
+
+  const forwarded = request.headers.get("forwarded");
+  if (forwarded) {
+    for (const segment of forwarded.split(",")) {
+      for (const pair of segment.trim().split(";")) {
+        const eq = pair.indexOf("=");
+        if (eq <= 0) continue;
+        const key = pair.slice(0, eq).trim().toLowerCase();
+        if (key !== "proto") continue;
+        let val = pair.slice(eq + 1).trim();
+        if (
+          (val.startsWith('"') && val.endsWith('"')) ||
+          (val.startsWith("'") && val.endsWith("'"))
+        ) {
+          val = val.slice(1, -1);
+        }
+        const p = val.toLowerCase();
+        if (p === "https") return true;
+        if (p === "http") return false;
+      }
+    }
+  }
+
+  return new URL(request.url).protocol === "https:";
+}
+
+function appendSecureIfHttps(parts: string[], request: Request): void {
+  if (isClientHttps(request)) {
+    parts.push("Secure");
+  }
+}
+
+export function sessionCookieHeader(token: string, request: Request): string {
   const parts = [
     `${ADMIN_SESSION_COOKIE}=${encodeURIComponent(token)}`,
     "Path=/",
@@ -110,11 +153,11 @@ export function sessionCookieHeader(token: string): string {
     "HttpOnly",
     "SameSite=Lax",
   ];
-  if (import.meta.env.PROD) parts.push("Secure");
+  appendSecureIfHttps(parts, request);
   return parts.join("; ");
 }
 
-export function clearSessionCookieHeader(): string {
+export function clearSessionCookieHeader(request: Request): string {
   const parts = [
     `${ADMIN_SESSION_COOKIE}=`,
     "Path=/",
@@ -122,6 +165,6 @@ export function clearSessionCookieHeader(): string {
     "HttpOnly",
     "SameSite=Lax",
   ];
-  if (import.meta.env.PROD) parts.push("Secure");
+  appendSecureIfHttps(parts, request);
   return parts.join("; ");
 }

@@ -4,6 +4,10 @@ node_modules/
 # Build output
 dist/
 build/
+.vercel/
+
+# Large binary (exceeds GitHub file size limit)
+public/Shopzpin.mp4
 
 # Vite
 *.local

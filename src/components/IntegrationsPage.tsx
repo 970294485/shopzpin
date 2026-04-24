@@ -29,20 +29,28 @@ export function IntegrationsPage() {
               </p>
             </div>
           </div>
-          
+
           <div className="flex-1 w-full max-w-md relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-[#ffcb05]/20 to-transparent blur-3xl -z-10 rounded-full"></div>
             <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
-              <ImageWithFallback 
-                src="https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwd2FsbGV0JTIwbW9iaWxlJTIwcGF5bWVudHxlbnwxfHx8fDE3NzYxNTUyNDd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
-                alt="電子錢包收款" 
+              <ImageWithFallback
+                src="https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwd2FsbGV0JTIwbW9iaWxlJTIwcGF5bWVudHxlbnwxfHx8fDE3NzYxNTUyNDd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                alt="電子錢包收款"
                 className="w-full h-auto object-cover aspect-[4/3]"
               />
             </div>
           </div>
         </div>
       </div>
-      <Integrations />
+      <Integrations>
+        <div className="flex w-full basis-full shrink-0 flex-col items-center justify-center p-3 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-default md:p-4">
+          <ImageWithFallback
+            src="/image-9.png"
+            alt="Airwallex"
+            className="h-[160px] w-auto object-contain"
+          />
+        </div>
+      </Integrations>
     </div>
   );
 }

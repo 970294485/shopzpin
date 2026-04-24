@@ -29,13 +29,13 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (!credentialsMatch(username, password)) {
       const res = json({ error: "帳號或密碼錯誤" }, 401);
-      res.headers.set("Set-Cookie", clearSessionCookieHeader());
+      res.headers.set("Set-Cookie", clearSessionCookieHeader(request));
       return res;
     }
 
     const token = createSessionToken();
     const res = json({ ok: true });
-    res.headers.set("Set-Cookie", sessionCookieHeader(token));
+    res.headers.set("Set-Cookie", sessionCookieHeader(token, request));
     return res;
   } catch (e) {
     console.error(e);

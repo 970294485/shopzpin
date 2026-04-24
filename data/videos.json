@@ -1,10 +1,66 @@
 [
   {
-    "id": "1",
-    "title": "Shopzpin 平台功能介紹",
-    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "date": "2024-01-17T00:00:00.000Z",
-    "category": "產品介紹",
+    "id": "394c8cac-b2eb-4274-9813-11c366a462b4",
+    "title": "印花 有字",
+    "url": "/印花 有字.mp4",
+    "date": "2026-04-24T02:20:59.165Z",
+    "category": "操作教學",
+    "coverUrl": ""
+  },
+  {
+    "id": "a90bbaa4-ca68-479d-862f-abb332a87564",
+    "title": "產品庫存 有字幕",
+    "url": "/產品庫存 有字幕.mp4",
+    "date": "2026-04-24T02:20:37.513Z",
+    "category": "操作教學",
+    "coverUrl": ""
+  },
+  {
+    "id": "f14b078f-28e9-49c5-9171-42db2eed6f93",
+    "title": "產品設定",
+    "url": "/產品設定.mp4",
+    "date": "2026-04-24T02:20:19.429Z",
+    "category": "操作教學",
+    "coverUrl": ""
+  },
+  {
+    "id": "368835eb-e2cc-422b-878a-fccaf9e70b71",
+    "title": "設立二維碼",
+    "url": "/設立二維碼.mp4",
+    "date": "2026-04-24T02:20:01.699Z",
+    "category": "操作教學",
+    "coverUrl": ""
+  },
+  {
+    "id": "a815b50c-3bb5-422b-988b-594957cd9a33",
+    "title": "設立分店 有字",
+    "url": "/設立分店 有字.mp4",
+    "date": "2026-04-24T02:19:40.998Z",
+    "category": "操作教學",
+    "coverUrl": ""
+  },
+  {
+    "id": "bdb2de96-ed4b-4698-8f8c-b0c6a03fe7ce",
+    "title": "優惠劵 有字",
+    "url": "/優惠劵 有字.mp4",
+    "date": "2026-04-24T02:19:16.914Z",
+    "category": "操作教學",
+    "coverUrl": ""
+  },
+  {
+    "id": "cdf73550-528a-4b93-8446-d5e50fee494a",
+    "title": "網店外觀",
+    "url": "/網店外觀.mp4",
+    "date": "2026-04-24T02:18:50.372Z",
+    "category": "操作教學",
+    "coverUrl": ""
+  },
+  {
+    "id": "64ca02d5-42c4-4bd4-b51c-8227bc61f200",
+    "title": "印花 有字 (1)",
+    "url": "/印花 有字 (1).mp4",
+    "date": "2026-04-24T02:12:38.420Z",
+    "category": "操作教學",
     "coverUrl": ""
   }
 ]

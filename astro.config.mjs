@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
@@ -18,7 +18,10 @@ function figmaAssetResolver() {
 
 export default defineConfig({
   output: 'server',
-  adapter: node({ mode: 'standalone' }),
+  // 與預渲染目錄產物（各路由下的 index.html）一致，利於 Nginx 等靜態伺服器解析
+  trailingSlash: 'always',
+  // Admin middleware uses node:crypto; keep middleware on Node, not Vercel Edge.
+  adapter: vercel({ edgeMiddleware: false }),
   integrations: [react()],
   vite: {
     plugins: [figmaAssetResolver(), tailwindcss()],

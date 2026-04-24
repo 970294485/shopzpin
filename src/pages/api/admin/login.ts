@@ -3,6 +3,7 @@ import {
   clearSessionCookieHeader,
   createSessionToken,
   credentialsMatch,
+  missingAdminEnvInProduction,
   sessionCookieHeader,
 } from "@/lib/admin-auth";
 
@@ -25,6 +26,17 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (!username || !password) {
       return json({ error: "請輸入帳號與密碼" }, 400);
+    }
+
+    const envMissing = missingAdminEnvInProduction();
+    if (envMissing.length > 0) {
+      console.error("[api/admin/login] missing env:", envMissing.join(", "));
+      return json(
+        {
+          error: `伺服器未設定後台環境變數：${envMissing.join("、")}。請至 Vercel 專案 → Settings → Environment Variables 新增（Production 勾選）後 Redeploy。`,
+        },
+        503
+      );
     }
 
     if (!credentialsMatch(username, password)) {

@@ -23,6 +23,21 @@ function envAdmin(key: "ADMIN_SESSION_SECRET" | "ADMIN_USERNAME" | "ADMIN_PASSWO
   return String(raw).trim();
 }
 
+/**
+ * 正式環境若未在 Vercel 設定後台變數，`credentialsMatch` 內部會拋錯並被當成「帳密錯誤」回 401。
+ * 用此函式先檢查，讓 API 回 503 與明確訊息。
+ */
+export function missingAdminEnvInProduction(): string[] {
+  if (!import.meta.env.PROD) return [];
+  const missing: string[] = [];
+  if (!envAdmin("ADMIN_USERNAME")) missing.push("ADMIN_USERNAME");
+  if (!envAdmin("ADMIN_PASSWORD")) missing.push("ADMIN_PASSWORD");
+  if (envAdmin("ADMIN_SESSION_SECRET").length < 16) {
+    missing.push("ADMIN_SESSION_SECRET（至少 16 字元）");
+  }
+  return missing;
+}
+
 function getSessionSecret(): string {
   const s = envAdmin("ADMIN_SESSION_SECRET");
   if (s.length >= 16) return s;

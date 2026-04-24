@@ -1,4 +1,3 @@
-import { Globe2 } from "lucide-react";
 import { Integrations } from "./Integrations";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
@@ -44,11 +43,12 @@ export function IntegrationsPage() {
         </div>
       </div>
       <Integrations>
-        <div className="flex shrink-0 flex-col items-center justify-center p-3 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-default md:p-4">
-          <div className="flex items-center gap-2 text-xl font-bold text-[#ffcb05]">
-            <Globe2 className="h-6 w-6 text-slate-900" aria-hidden />
-            <span className="text-slate-900">Wonder</span>
-          </div>
+        <div className="flex w-full basis-full shrink-0 flex-col items-center justify-center p-3 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-default md:p-4">
+          <ImageWithFallback
+            src="/image-9.png"
+            alt="Airwallex"
+            className="h-[160px] w-auto object-contain"
+          />
         </div>
       </Integrations>
     </div>

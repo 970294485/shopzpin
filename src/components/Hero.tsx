@@ -6,8 +6,16 @@ const luckyWheelImg = typeof luckyWheelImport === 'object' && luckyWheelImport !
 
 const bgImage = "https://images.unsplash.com/photo-1645109870868-e1b6f909e444?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwbGF5aW5nJTIwbW9iaWxlJTIwZ2FtZXxlbnwxfHx8fDE3NzYxNTUyNDd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
 
+/** YouTube video ID for「觀看演示」— `public/Shopzpin.mp4` is gitignored (too large for GitHub), so embed streams on Vercel. Override in `.env`: `PUBLIC_HERO_DEMO_YOUTUBE_ID=...` */
+function getHeroDemoYoutubeId(): string {
+  const raw = import.meta.env.PUBLIC_HERO_DEMO_YOUTUBE_ID;
+  if (typeof raw === "string" && raw.trim()) return raw.trim();
+  return "iOh7lOhfCwI";
+}
+
 export function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const demoYoutubeId = getHeroDemoYoutubeId();
 
   return (
     <section 
@@ -177,16 +185,15 @@ export function Hero() {
             >
               <X className="h-6 w-6" />
             </button>
-            <video
-              src="/Shopzpin.mp4"
-              controls
-              autoPlay
-              playsInline
-              className="h-full w-full object-contain"
+            <iframe
+              key={demoYoutubeId}
+              className="h-full min-h-[50dvh] w-full border-0 sm:min-h-0"
+              src={`https://www.youtube-nocookie.com/embed/${demoYoutubeId}?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1`}
               title="Shopzpin 平台演示"
-            >
-              您的瀏覽器不支援影片播放。
-            </video>
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
           </div>
         </div>
       )}

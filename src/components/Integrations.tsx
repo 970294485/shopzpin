@@ -15,8 +15,8 @@ export function Integrations({ children }: { children?: React.ReactNode }) {
           </p>
         </div>
 
-        <div className="mx-auto max-w-7xl overflow-x-auto overscroll-x-contain pb-3 opacity-70 [scrollbar-width:thin]">
-          <div className="mx-auto flex w-max max-w-none flex-nowrap items-center justify-center gap-6 py-2 md:gap-8">
+        <div className="mx-auto max-w-7xl w-full pb-3 opacity-70">
+          <div className="mx-auto flex w-full flex-wrap items-center justify-center gap-6 py-2 md:gap-8">
           {/* E-commerce & Payment Platform Logos (Mocked with styled text/icons for robustness) */}
           <div className="flex shrink-0 flex-col items-center justify-center p-3 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-default md:p-4">
             <div className="flex items-center gap-2 font-bold text-xl text-[#95bf47]">

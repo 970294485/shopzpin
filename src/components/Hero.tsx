@@ -6,16 +6,16 @@ const luckyWheelImg = typeof luckyWheelImport === 'object' && luckyWheelImport !
 
 const bgImage = "https://images.unsplash.com/photo-1645109870868-e1b6f909e444?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwbGF5aW5nJTIwbW9iaWxlJTIwZ2FtZXxlbnwxfHx8fDE3NzYxNTUyNDd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
 
-/** YouTube video ID for「觀看演示」— `public/Shopzpin.mp4` is gitignored (too large for GitHub), so embed streams on Vercel. Override in `.env`: `PUBLIC_HERO_DEMO_YOUTUBE_ID=...` */
-function getHeroDemoYoutubeId(): string {
-  const raw = import.meta.env.PUBLIC_HERO_DEMO_YOUTUBE_ID;
+/** Vimeo video ID for「觀看演示」— matches https://vimeo.com/1186852566. Override in `.env`: `PUBLIC_HERO_DEMO_VIMEO_ID=...` */
+function getHeroDemoVimeoId(): string {
+  const raw = import.meta.env.PUBLIC_HERO_DEMO_VIMEO_ID;
   if (typeof raw === "string" && raw.trim()) return raw.trim();
-  return "iOh7lOhfCwI";
+  return "1186852566";
 }
 
 export function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const demoYoutubeId = getHeroDemoYoutubeId();
+  const demoVimeoId = getHeroDemoVimeoId();
 
   return (
     <section 
@@ -186,11 +186,11 @@ export function Hero() {
               <X className="h-6 w-6" />
             </button>
             <iframe
-              key={demoYoutubeId}
+              key={demoVimeoId}
               className="h-full min-h-[50dvh] w-full border-0 sm:min-h-0"
-              src={`https://www.youtube-nocookie.com/embed/${demoYoutubeId}?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1`}
+              src={`https://player.vimeo.com/video/${demoVimeoId}?autoplay=1&muted=1&dnt=1`}
               title="Shopzpin 平台演示"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
               allowFullScreen
               referrerPolicy="strict-origin-when-cross-origin"
             />
